@@ -1,5 +1,5 @@
 > Hackbio-cancer-internship-stage-4
-### Unravelling Glioma Heterogeneity through Unsupervised Clustering using Transcriptomic Profiling and Machine Learning.
+### Exploring Glioma Diversity Through Machine Learning and Transcriptomic Profiling
 
 #### Table of Contents
 - **[Report](./Report.md)**: Detailed report of the analysis.
