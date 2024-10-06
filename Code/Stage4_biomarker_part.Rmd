@@ -1,0 +1,187 @@
+---
+title: "Untitled"
+author: "Nishat Tamanna"
+date: "2024-09-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#BiocManager::install("TCGAbiolinks")
+#BiocManager::install("edgeR")
+#BiocManager::install("limma")
+#BiocManager::install("EDASeq")
+BiocManager::install("remotes")
+remotes::install_github("BioinformaticsFMRP/TCGAbiolinks")
+library("TCGAbiolinks")
+library(SummarizedExperiment)
+library(biomaRt)
+library("limma")
+library("edgeR")
+library("EDASeq")
+library(gplots)
+
+#project information
+getProjectSummary("TCGA-LGG")
+?GDCquery
+```
+
+# Download and preprocess data
+```{r}
+lgg_transcriptome <- GDCquery(project = "TCGA-LGG",
+                data.category = "Transcriptome Profiling",
+                data.type = "Gene Expression Quantification",
+                experimental.strategy = "RNA-Seq")
+GDCdownload(lgg_transcriptome, method = "api", files.per.chunk = 10)
+lgg.data <- GDCprepare(lgg_transcriptome)
+View(lgg.data)
+# Explore Some Metadata Information
+lgg.data$paper_IDH.status
+```
+```{r}
+# Creating Metadata
+simpleMeta <- data.frame("barcode"=lgg.data$barcode,
+                         "IDH_status"=lgg.data$paper_IDH.status)
+View(simpleMeta$IDH_status)
+```
+```{r}
+#select unstranded dataset
+lgg.raw.data <- assays(lgg.data) #help to extract information summarizing the experiment
+# For gene expression, to see a boxplot correlation and AAIC plot to define outliers
+lgg.data_Outliers <- TCGAanalyze_Preprocessing(lgg.data)
+dim(lgg.raw.data$unstranded)
+#extracting barcodes for IDH mutants and IDH wild types
+selectedBarcodes <- c(subset(simpleMeta, IDH_status == "Mutant")$barcode, subset(simpleMeta, IDH_status == "WT")$barcode)
+selectedData <- lgg.raw.data$unstranded[,c(selectedBarcodes)]
+dim(selectedData)
+```
+
+# Data normalization and filtering
+```{r}
+normData <- TCGAanalyze_Normalization(tabDF = selectedData, geneInfo = geneInfoHT, method = "geneLength")
+# filtering
+filtData <- TCGAanalyze_Filtering(tabDF = normData,
+                                  method = "quantile",
+                                  qnt.cut = 0.25)
+```
+
+# Annotate and save
+```{r}
+# Annotate first 20 columns as 'irregular_smoker'
+colnames(filtData)[1:419] <- paste0("Mutant", 1:419)
+
+# Annotate the last 20 columns as 'regular_smoker'
+colnames(filtData)[420:513] <- paste0("WT", 1:94)
+
+#saving the normalized count data table as csv file
+write.csv(filtData, file = "Normalized_count_Data_lgg.csv", row.names = TRUE)
+```
+
+
+```{r}
+#Differential Expression Analysis
+selectResults <- TCGAanalyze_DEA(
+  mat1 = filtData[, grep("^Mutant", colnames(filtData))],  # Selecting the 'irregular_smoker' columns
+  mat2 = filtData[, grep("^WT", colnames(filtData))],    # Selecting the 'regular_smoker' columns
+  Cond1type = "IDH Mutant",
+  Cond2type = "IDH WT",
+  pipeline = "edgeR",
+  fdr.cut = 0.01,
+  logFC.cut = 2
+)
+selectResults.level <- TCGAanalyze_LevelTab(selectResults,"IDH Mutant", "IDH WT",
+                                            filtData[,grep("^Mutant", colnames(filtData))],
+                                            filtData[,grep("^WT", colnames(filtData))])
+View(selectResults.level)
+```
+
+
+```{r}
+heat.data <- filtData[rownames(selectResults.level),]
+#color the plot by the type of smoking status
+idh.status <- c(rep("IDH Mutant",419), rep("IDH WT",94))
+color_codes <- c()
+for (i in idh.status){
+  if (i == "IDH Mutant"){
+    color_codes <- c(color_codes, "red")
+  }else{
+    color_codes <- c(color_codes, "blue")
+  }
+}
+# Now plot the heatmap
+heatmap.2(x=as.matrix(heat.data),
+          col=hcl.colors(10, palette = "Viridis"),
+          Rowv = F, Colv = T,
+          scale = "row",
+          sepcolor = "black",
+          trace = "none",
+          key = TRUE,
+          dendrogram = "col",
+          cexRow = 0.4, cexCol = 0.8,
+          main = "Heatmap of DEGs by IDH Status",
+          na.color = "black",
+          srtCol = 45,
+          ColSideColors = color_codes)
+```
+
+
+```{r}
+#View the volcano plot first
+# Sample plot: x-axis (logFC), y-axis (-log10(FDR))
+plot(x = selectResults.level$logFC, 
+     y = -log10(selectResults.level$FDR),
+     col = ifelse(selectResults.level$logFC > 0, "blue", "red"),  # Blue for positive, red for negative
+     pch = 16,  # Set point shape (optional)
+     xlab = "logFC", 
+     ylab = "-log10(FDR)",
+     main = "Volcano Plot of Significant DEGs")  # Title of the plot
+```
+
+
+```{r}
+upreg.genes <- rownames(subset(selectResults.level, logFC > 2))
+downreg.genes <- rownames(subset(selectResults.level, logFC < -2))
+
+#convert ensembl IDs to gene IDs using biomart
+mart <- useMart(biomart = "ensembl", dataset = "hsapiens_gene_ensembl")
+upreg.genes <- getBM(attributes = c("ensembl_gene_id",'hgnc_symbol'),
+                     filters = "ensembl_gene_id",
+                     values = upreg.genes,
+                     mart = mart)$hgnc_symbol
+downreg.genes <- getBM(attributes = c("ensembl_gene_id",'hgnc_symbol'),
+                     filters = "ensembl_gene_id",
+                     values = downreg.genes,
+                     mart = mart)$hgnc_symbol
+```
+
+
+```{r}
+#enrichment analysis for both
+up.EA <- TCGAanalyze_EAcomplete(TFname="Upregulated",upreg.genes)
+down.EA <- TCGAanalyze_EAcomplete(TFname="Downregulated",downreg.genes)
+TCGAvisualize_EAbarplot(tf = rownames(up.EA$ResBP),
+                        GOBPTab = up.EA$ResBP,
+                        GOCCTab = up.EA$ResCC,
+                        GOMFTab = up.EA$ResMF,
+                        PathTab = up.EA$ResPat,
+                        nRGTab = upreg.genes,
+                        nBar = 5,
+                        text.size = 2,
+                        fig.width = 30,
+                        fig.height = 15)
+TCGAvisualize_EAbarplot(tf = rownames(down.EA$ResBP),
+                        GOBPTab = down.EA$ResBP,
+                        GOCCTab = down.EA$ResCC,
+                        GOMFTab = down.EA$ResMF,
+                        PathTab = down.EA$ResPat,
+                        nRGTab = downreg.genes,
+                        nBar = 5,
+                        text.size = 2,
+                        fig.width = 30,
+                        fig.height = 15)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
