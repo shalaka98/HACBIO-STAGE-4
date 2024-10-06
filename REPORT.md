@@ -15,7 +15,7 @@
 ## Conclusion:
 ## References:
 
-#### Contributors
+### Contributors
 |Name|Slack ID|Linkedin|
 | ----------- |----------- |----------- |
 |Ayooluwa Joseph|@Jay1079| <a href="https://www.linkedin.com/in/ayooluwa-joseph/" target="_blank">	LinkedIn Profile</a> |
