@@ -17,3 +17,4 @@
 |Nishat Tamanna|@Nishat| <a href="https://www.linkedin.com/in/nishat-tamanna-45863117a/" target="_blank">	LinkedIn Profile</a>|
 |Shalaka More|@shalaka| <a href="https://www.linkedin.com/in/shalaka-more-03277913b/" target="_blank">	LinkedIn Profile</a>  |
 |Sreeja Mondal|@sreeja| <a href="https://linkedin.com/in/sreejamondal263/" target="_blank">	LinkedIn Profile</a> |
+|Owolabi Oluwatosin|@Oluwatosin| <a href="https://www.linkedin.com/in/owolabi-oluwatosin-a9063830b/" target="_blank">	LinkedIn Profile</a> |
