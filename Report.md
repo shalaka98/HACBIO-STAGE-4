@@ -52,6 +52,8 @@ The distribution of IDH mutation status (Mutant/WT) across the clusters revealed
 </p>
 
 ## Conclusion:
+This study explored IDH status biomarkers in low-grade glioma using transcriptomic profiling and machine learning, identifying key differentially expressed genes and enriched pathways like glutamate receptor and atherosclerosis signaling. The ML model achieved 98% accuracy in distinguishing IDH mutants from wild types, offering potential for early diagnosis, prognosis, and targeted therapy. These findings warrant further validation in larger cohorts to confirm their clinical significance.
+
 ## References:
 Ceccarelli, M., Barthel, F. P., Malta, T. M., Sabedot, T. S., Salama, S. R., Murray, B. A., Morozova, O., Newton, Y., Radenbaugh, A., Pagnotta, S. M., Anjum, S., Wang, J., Manyam, G., Zoppoli, P., Ling, S., Rao, A. A., Grifford, M., Cherniack, A. D., Zhang, H., . . . Zmuda, E. (2016). Molecular profiling reveals biologically discrete subsets and pathways of progression in diffuse glioma. Cell, 164(3), 550–563. https://doi.org/10.1016/j.cell.2015.12.028
 
