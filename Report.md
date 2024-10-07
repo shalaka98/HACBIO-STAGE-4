@@ -22,13 +22,13 @@ Gene expression profiles from TCGA-LGG were used to compare IDH wild types and I
 
 <p align="center">
     <img src="Images/Biomarker/stage4volcano.png" alt="Heatmap of DEGs by Smoking Status" width="400"/> 
-<br> <em>Heatmap of DEGs by Smoking Status</em>
+<br> <em>Heatmap of DEGs by IDH Status</em>
 </p>
 
 <p align="center">
-<img src="Images/Biomarker/PreprocessingOutput.png" alt="Heatmap of DEGs by Smoking Status" width="400"/> 
-<img src="Images/Biomarker/HeatMap comparing 20 of IDHWT and IDHMutant.png" alt="Heatmap of DEGs by Smoking Status" width="400"/>
-<br> <em> Fig :  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig :  </em>
+<img src="Images/Biomarker/PreprocessingOutput.png" alt="Boxplot of correlation" width="400"/> 
+<img src="Images/Biomarker/HeatMap comparing 20 of IDHWT and IDHMutant.png" alt="Heatmap of DEGs by IDH Status" width="400"/>
+<br> <em> Fig : Boxplot of correlation </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Heatmap of DEGs by IDH Status </em>
 </p>
 
 <p align="center">
@@ -42,13 +42,13 @@ The consensus clustering analysis with K = 4 identified four distinct and stable
 <p align="center">
     <img src="Images/ML/consensus004.png" alt="consensus" width="400"/>
     <img src="Images/ML/heatmap_output.png" alt="Heatmap" width="400"/>
-<br> <em> Fig :consensus  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Heatmap </em> 
+<br> <em> Fig : Heatmap consensus cluster  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Heatmap consensus IDH status </em> 
 </p>
 The distribution of IDH mutation status (Mutant/WT) across the clusters revealed that the majority of Mutant samples were concentrated in three clusters, while WT samples were more evenly distributed but less frequent overall. These findings suggest a potential association between IDH mutation status and expression-based clusters, which could provide valuable insights into the molecular subtypes of the samples analyzed. Further biological interpretation is required to explore the functional significance of these clusters to IDH mutation.
 <p align="center">
     <img src="Images/ML/Rplot.png" alt="Distribution of IDH Status in Expression Clusters" width="400"/>
     <img src="Images/ML/consensus022.png" alt="Delta area" width="400"/>
-<br> <em> Fig : IDH Distribution in Expression Clusters  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Delta area  </em>
+<br> <em> Fig : Expression Clusters  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Delta area  </em>
 </p>
 
 ## Conclusion:
