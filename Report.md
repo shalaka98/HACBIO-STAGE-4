@@ -26,19 +26,14 @@ Gene expression profiles from TCGA-LGG were used to compare IDH wild types and I
 </p>
 
 <p align="center">
-    <img src="Images/Biomarker/down-path-stage4.jpg" alt="Heatmap of DEGs by Smoking Status" width="400"/>
+<img src="Images/Biomarker/down-path-stage4.jpg" alt="Heatmap of DEGs by Smoking Status" width="400"/>  <br>Fig :
+<img src="Images/Biomarker/upregulated-pathway-stage4.jpg" alt="Heatmap of DEGs by Smoking Status" width="400"/> <br>Fig :
+</p>
+  
+<img src="Images/Biomarker/PreprocessingOutput.png" alt="Heatmap of DEGs by Smoking Status" width="400"/>
     <br>Fig : 
 </p>
 
-<p align="center">
-    <img src="Images/Biomarker/upregulated-pathway-stage4.jpg" alt="Heatmap of DEGs by Smoking Status" width="400"/>
-    <br>Fig : 
-</p>
-
-<p align="center">
-    <img src="Images/Biomarker/PreprocessingOutput.png" alt="Heatmap of DEGs by Smoking Status" width="400"/>
-    <br>Fig : 
-</p>
 <p align="center">
     <img src="Images/Biomarker/HeatMap comparing 20 of IDHWT and IDHMutant.png" alt="Heatmap of DEGs by Smoking Status" width="400"/>
     <br>Fig : 
