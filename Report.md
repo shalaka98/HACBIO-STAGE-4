@@ -21,8 +21,8 @@ This study aimed to identify IDH status-associated biomarkers in low-grade gliom
 Gene expression profiles from TCGA-LGG were used to compare IDH wild types and IDH mutants. RNAseq data revealed several DEGs. The volcano plot showed a distinct clustering of IDH wild types and IDH mutants. Out of all gene enrichment analyses highlighted, extracellular matrix, transcription, and pattern formations were upregulated while different binding functions and cellular receptor signaling were downregulated. 
 
 <p align="center">
-    <img src="Images/Biomarker/stage4volcano.png" alt="Heatmap of DEGs by Smoking Status" width="400"/> 
-<br> <em>Heatmap of DEGs by IDH Status</em>
+    <img src="Images/Biomarker/stage4volcano.png" alt="Volcano plot of significant DEGs" width="400"/> 
+<br> <em> Fig :Volcano plot of significant DEGs </em>
 </p>
 
 <p align="center">
