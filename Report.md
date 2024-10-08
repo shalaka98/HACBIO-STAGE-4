@@ -45,6 +45,13 @@ The consensus clustering analysis with K = 4 identified four distinct and stable
 <br> <em> Fig : Consensus matrix heatmap cluster  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Consensus matrix heatmap-  Annotations for IDH mutation status </em> 
 </p>
 The distribution of IDH mutation status (Mutant/WT) across the clusters revealed that the majority of Mutant samples were concentrated in three clusters, while WT samples were more evenly distributed but less frequent overall. These findings suggest a potential association between IDH mutation status and expression-based clusters, which could provide valuable insights into the molecular subtypes of the samples analyzed. Further biological interpretation is required to explore the functional significance of these clusters to IDH mutation.
+
+<p align="center">
+    <img src="Images/ML/roc curve.png" alt="ROC curve" width="400"/>
+    <img src="Images/ML/Precision-recall-curve.png" alt="Precision recall curve" width="400"/>
+<br> <em> Fig : ROC curve  </em>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <em> Fig : Precision recall curve  </em>
+</p>
+
 <p align="center">
     <img src="Images/ML/Rplot.png" alt="Distribution of IDH Status in Expression Clusters" width="400"/>
     <img src="Images/ML/consensus022.png" alt="Delta area" width="400"/>
