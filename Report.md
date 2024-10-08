@@ -1,4 +1,4 @@
-<h2 align="center"> Exploring Glioma Diversity Through Machine Learning and Transcriptomic Profiling </h2>
+<h1 align="center"> Exploring Glioma Diversity Through Machine Learning and Transcriptomic Profiling </h1>
 
 <a align="center"> Table of Contents: </a>
   <a href="#Introduction"> Introduction </a> |
