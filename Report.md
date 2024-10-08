@@ -62,7 +62,9 @@ The distribution of IDH mutation status (Mutant/WT) across the clusters revealed
 This study explored IDH status biomarkers in low-grade glioma using transcriptomic profiling and machine learning, identifying key differentially expressed genes and enriched pathways like glutamate receptor and atherosclerosis signaling. The ML model achieved 98% accuracy in distinguishing IDH mutants from wild types, offering potential for early diagnosis, prognosis, and targeted therapy. These findings warrant further validation in larger cohorts to confirm their clinical significance.
 
 ## References:
-Ceccarelli, M., Barthel, F. P., Malta, T. M., Sabedot, T. S., Salama, S. R., Murray, B. A., Morozova, O., Newton, Y., Radenbaugh, A., Pagnotta, S. M., Anjum, S., Wang, J., Manyam, G., Zoppoli, P., Ling, S., Rao, A. A., Grifford, M., Cherniack, A. D., Zhang, H., . . . Zmuda, E. (2016). Molecular profiling reveals biologically discrete subsets and pathways of progression in diffuse glioma. Cell, 164(3), 550–563. https://doi.org/10.1016/j.cell.2015.12.028
+1. Hegi, M. E., Diserens, A. C., Gorlia, T., Hamou, M. F., de Tribolet, N., Weller, M., ... & Stupp, R. (2005). MGMT gene silencing and benefit from temozolomide in glioblastoma. New England Journal of Medicine, 352(10), 997-1003. doi: 10.1056/NEJMoa043331
+2. Louis, D. N., Perry, A., Reifenberger, G., von Deimling, A., Figarella-Branger, D., Cavenee, W. K., ... & Wesseling, P. (2016). The 2016 World Health Organization classification of tumors of the central nervous system: A summary. Acta Neuropathologica, 131(6), 803-820. doi: 10.1007/s00401-016-1545-1
+3. Zhou, X., Zhong, Q., & Chen, X. (2020). IDH mutations in gliomas. Brain Pathology, 30(4), 685-694. doi: 10.1111/bpa.12833
 
 ### Contributors
 |Name|Slack ID|Linkedin|
