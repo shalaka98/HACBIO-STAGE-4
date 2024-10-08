@@ -1,4 +1,4 @@
-<h2 align="center">  Unravelling Glioma Heterogeneity through Unsupervised Clustering using Transcriptomic Profiling and Machine Learning </h2>
+<h2 align="center"> Exploring Glioma Diversity Through Machine Learning and Transcriptomic Profiling </h2>
 
 <a align="center"> Table of Contents: </a>
   <a href="#Introduction"> Introduction </a> |
